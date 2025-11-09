@@ -1,17 +1,17 @@
 # TP 12 : Service SOAP avec Apache CXF (JAX-WS, JAXB, WSDL, WS-Security)
 
-## 📋 Vue d'ensemble
+ Vue d'ensemble
 
 Projet complet démontrant la création d'un service SOAP avec Apache CXF, incluant :
-- ✅ **JAX-WS** : Exposition de services web SOAP
-- ✅ **JAXB** : Sérialisation/désérialisation XML ↔ Java
-- ✅ **WSDL** : Génération automatique du contrat (code-first)
-- ✅ **WS-Security** : Authentification via UsernameToken (WSS4J)
-- ✅ **Clients Java** : Consommation du service (standard et sécurisé)
+- **JAX-WS** : Exposition de services web SOAP
+- **JAXB** : Sérialisation/désérialisation XML vers Java
+- **WSDL** : Génération automatique du contrat (code-first)
+- **WS-Security** : Authentification via UsernameToken (WSS4J)
+- **Clients Java** : Consommation du service (standard et sécurisé)
 
 ---
 
-## 🏗️ Architecture du projet
+Architecture du projet
 
 ```
 tp2/
@@ -35,30 +35,30 @@ tp2/
 
 ---
 
-## 🚀 Démarrage rapide
+Démarrage rapide
 
-### 1️⃣ Prérequis
+1. Prérequis
 
 - **Java 17** (ou 11+)
 - **Maven 3.8+**
 - **Port 8080** libre
 - **SoapUI** (optionnel, pour tester graphiquement)
 
-### 2️⃣ Installation des dépendances
+2. Installation des dépendances
 
 ```powershell
 mvn clean install
 ```
 
-### 3️⃣ Lancer le serveur (choix)
+3. Lancer le serveur (choix)
 
-#### Option A : Serveur simple (sans sécurité)
+Option A : Serveur simple (sans sécurité)
 
 ```powershell
 mvn exec:java -Dexec.mainClass="com.soap.cxf.Server"
 ```
 
-**Endpoints disponibles :**
+Endpoints disponibles :
 - Service : `http://localhost:8080/services/hello`
 - WSDL : `http://localhost:8080/services/hello?wsdl`
 
@@ -72,16 +72,9 @@ mvn exec:java -Dexec.mainClass="com.soap.cxf.SecureServer"
 - Service non sécurisé : `http://localhost:8080/services/hello?wsdl`
 - Service sécurisé : `http://localhost:8080/services/hello-secure?wsdl`
 
-**Utilisateurs autorisés :**
-| Username | Password    |
-|----------|-------------|
-| student  | secret123   |
-| admin    | Admin@2024  |
-| teacher  | Pass@123    |
 
----
 
-## 🧪 Tests
+## Tests
 
 ### Avec le client Java (serveur simple)
 
@@ -124,7 +117,7 @@ mvn exec:java -Dexec.mainClass="com.soap.cxf.client.SecureClientDemo"
    - File → New SOAP Project
    - Project Name : `CXF-Test`
    - Initial WSDL : `http://localhost:8080/services/hello?wsdl`
-   - ✓ Create Requests
+   - Create Requests
 
 2. **Tester sayHello** :
    - Ouvrir Request1 sous `sayHello`
@@ -140,7 +133,7 @@ mvn exec:java -Dexec.mainClass="com.soap.cxf.client.SecureClientDemo"
       </soapenv:Body>
    </soapenv:Envelope>
    ```
-   - Cliquer sur ▶️ (Submit)
+   - Cliquer sur le bouton Submit
 
 3. **Tester findPerson** :
    ```xml
@@ -180,12 +173,12 @@ mvn exec:java -Dexec.mainClass="com.soap.cxf.client.SecureClientDemo"
    - Envoyer la requête
 
 **Résultat attendu :**
-- ✅ Réponse SOAP valide avec les données
-- ❌ Sans credentials : `SOAP Fault` avec message d'erreur sécurité
+- Réponse SOAP valide avec les données
+- Sans credentials : erreur SOAP Fault avec message d'erreur sécurité
 
 ---
 
-## 📖 Comprendre le WSDL (Étape 6)
+## Comprendre le WSDL (Étape 6)
 
 Accéder au WSDL : `http://localhost:8080/services/hello?wsdl`
 
@@ -251,7 +244,7 @@ Accéder au WSDL : `http://localhost:8080/services/hello?wsdl`
 
 ---
 
-## 🔐 WS-Security en détail (Étape 10)
+## WS-Security en détail (Étape 10)
 
 ### Architecture de sécurité
 
@@ -297,14 +290,14 @@ Client                              Serveur
 
 | Configuration            | Sécurité | Usage                          |
 |--------------------------|----------|--------------------------------|
-| PasswordText + HTTP      | ⚠️ Faible | **Développement uniquement**   |
-| PasswordText + HTTPS     | ✅ Correct| Production acceptable          |
-| PasswordDigest + HTTPS   | ✅✅ Bien | **Recommandé production**      |
-| Signature + Chiffrement  | 🔒 Max   | Haute sécurité                 |
+| PasswordText + HTTP      | Faible   | Développement uniquement       |
+| PasswordText + HTTPS     | Correct  | Production acceptable          |
+| PasswordDigest + HTTPS   | Bien     | Recommandé production          |
+| Signature + Chiffrement  | Maximum  | Haute sécurité                 |
 
 ---
 
-## 🔧 Dépannage (Étape 11)
+## Dépannage (Étape 11)
 
 ### Problème : WSDL introuvable
 
@@ -354,7 +347,7 @@ taskkill /PID <PID> /F
 
 ---
 
-## 📚 Concepts clés (Étape 0)
+## Concepts clés (Étape 0)
 
 ### Apache CXF
 Framework Apache pour services web SOAP (JAX-WS) et REST (JAX-RS). Gère :
@@ -383,27 +376,27 @@ Standard Java pour liaison XML ↔ Objet.
 
 ### WSDL (Web Services Description Language)
 Contrat XML du service décrivant :
-- **types** : Schémas XSD des données
-- **messages** : Requêtes et réponses
-- **portType** : Interface logique (opérations)
-- **binding** : Protocole (SOAP/HTTP)
-- **service** : Endpoint physique (URL)
+- types : Schémas XSD des données
+- messages : Requêtes et réponses
+- portType : Interface logique (opérations)
+- binding : Protocole (SOAP/HTTP)
+- service : Endpoint physique (URL)
 
 ### WS-Security (WSS4J)
 Sécurité au niveau message SOAP. Supporte :
-- **UsernameToken** : Authentification par username/password
-- **Signature** : Garantit l'intégrité et la non-répudiation
-- **Chiffrement** : Garantit la confidentialité
-- **Timestamp** : Prévient les attaques par rejeu
+- UsernameToken : Authentification par username/password
+- Signature : Garantit l'intégrité et la non-répudiation
+- Chiffrement : Garantit la confidentialité
+- Timestamp : Prévient les attaques par rejeu
 
 ### UDDI (Étape 9 - Culture SOA)
 Registre historique "publier–trouver–lier" pour services web.
-- **Peu utilisé aujourd'hui** (remplacé par API Gateways, Service Mesh)
+- Peu utilisé aujourd'hui (remplacé par API Gateways, Service Mesh)
 - Utile pour comprendre l'architecture SOA classique
 
 ---
 
-## 🎯 Checklist de validation
+## Checklist de validation
 
 - [ ] WSDL accessible et parsable (`?wsdl`)
 - [ ] `sayHello` fonctionne (SoapUI + client Java)
@@ -415,9 +408,9 @@ Registre historique "publier–trouver–lier" pour services web.
 
 ---
 
-## 🚀 Aller plus loin (Étape 12)
+Aller plus loin (Étape 12)
 
-### 1. Intégration Spring Boot
+ 1. Intégration Spring Boot
 
 ```xml
 <dependency>
@@ -426,14 +419,14 @@ Registre historique "publier–trouver–lier" pour services web.
 </dependency>
 ```
 
-### 2. Passer à PasswordDigest
+ 2. Passer à PasswordDigest
 
 Modifier `ServerPasswordCallback.java` :
 ```java
 inProps.put(WSHandlerConstants.PASSWORD_TYPE, WSConstants.PW_DIGEST);
 ```
 
-### 3. Signature et chiffrement
+ 3. Signature et chiffrement
 
 ```java
 inProps.put(WSHandlerConstants.ACTION, 
@@ -442,7 +435,7 @@ inProps.put(WSHandlerConstants.ACTION,
     WSHandlerConstants.ENCRYPT);
 ```
 
-### 4. HTTPS avec Jetty
+ 4. HTTPS avec Jetty
 
 ```java
 Server server = new Server(8443);
@@ -451,8 +444,7 @@ sslContextFactory.setKeyStorePath("keystore.jks");
 sslContextFactory.setKeyStorePassword("password");
 // ...
 ```
-
-### 5. Tests d'intégration
+ 5. Tests d'intégration
 
 ```java
 @Test
@@ -469,21 +461,13 @@ public void testSecuredEndpoint() {
 2. Générer les classes avec `wsdl2java`
 3. Implémenter l'interface générée
 
----
-
-## 📞 Support
+## Support
 
 Pour toute question ou problème :
-1. Consulter la section **Dépannage**
+1. Consulter la section Dépannage
 2. Vérifier les logs du serveur
 3. Utiliser l'onglet "Raw" de SoapUI pour voir le XML exact
 
----
+## Licence
+```
 
-## 📄 Licence
-
-Projet pédagogique - TP 12 - Libre d'utilisation pour l'apprentissage.
-
----
-
-**Bon développement ! 🚀**
